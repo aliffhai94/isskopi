@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Models\ItemProduce;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateItemProduceRequest;
+use App\Http\Requests\UpdateItemProduceRequest;
 
 class ItemProduceController extends Controller
 {
@@ -26,7 +28,7 @@ class ItemProduceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateItemProduceRequest $request)
     {
         $user = Auth::user();
 
@@ -53,7 +55,7 @@ class ItemProduceController extends Controller
      * @param  \App\Models\ItemProduce  $itemProduce
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ItemProduce $itemProduce)
+    public function update(UpdateItemProduceRequest $request, ItemProduce $itemProduce)
     {
         $itemProduce->update($request->all());
         return $this->sendResponse('Successfully tested update',$itemProduce->refresh,200);
@@ -71,3 +73,4 @@ class ItemProduceController extends Controller
         return $this->sendResponse('Successfully Deleted',null,200);
     }
 }
+

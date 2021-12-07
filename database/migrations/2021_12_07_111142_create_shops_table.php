@@ -30,6 +30,9 @@ class CreateShopsTable extends Migration
      */
     public function down()
     {
+        Schema::table('shops', function(Blueprint $table){
+            $table->dropForeign(['user_id']);
+        });
         Schema::dropIfExists('shops');
     }
 }

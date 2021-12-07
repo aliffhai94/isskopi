@@ -33,6 +33,11 @@ class CreateStoreItemTable extends Migration
      */
     public function down()
     {
+        Schema::table('store_items', function(Blueprint $table){
+            $table->dropForeign(['user_id']);
+            $table->dropForeign(['item_produce_id']);
+            $table->dropForeign(['shop_id']);
+        });
         Schema::dropIfExists('store_items');
     }
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Models\Shop;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateShopRequest;
+use App\Http\Requests\UpdateShopRequest;
 
 class ShopController extends Controller
 {
@@ -26,7 +28,7 @@ class ShopController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateShopRequest $request)
     {
         $user = Auth::user();
 
